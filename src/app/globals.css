@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #C13F5B;
+  color: #FBF3E7;
+}
+
+/* Thin, bakery-warm scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF3E7;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6A24A;
+  border-radius: 10px;
+  border: 2px solid #FBF3E7;
+}
+
+@layer utilities {
+  .bg-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: theme('backgroundImage.grain');
+    pointer-events: none;
+  }
+
+  /* Scalloped "pie-crust" edge — the site's signature shape, used on
+     card headers and section dividers to echo piped icing/crust edges. */
+  .scallop-top {
+    -webkit-mask-image: radial-gradient(circle at 10px 0px, transparent 9px, black 9.5px);
+    mask-image: radial-gradient(circle at 10px 0px, transparent 9px, black 9.5px);
+    -webkit-mask-size: 20px 20px;
+    mask-size: 20px 20px;
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    -webkit-mask-position: top left;
+    mask-position: top left;
+  }
+
+  .scallop-bottom {
+    -webkit-mask-image: radial-gradient(circle at 10px 100%, transparent 9px, black 9.5px);
+    mask-image: radial-gradient(circle at 10px 100%, transparent 9px, black 9.5px);
+    -webkit-mask-size: 20px 20px;
+    mask-size: 20px 20px;
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    -webkit-mask-position: bottom left;
+    mask-position: bottom left;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
