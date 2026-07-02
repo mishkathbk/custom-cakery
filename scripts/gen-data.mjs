@@ -1,12 +1,13 @@
 // One-off generator used to seed src/data/cakes.js.
 // Not part of the app build — safe to delete after editing the data by hand.
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
-const imagesDir = path.join(process.cwd(), 'public', 'images');
-const ALL_IMAGES = fs.readdirSync(imagesDir)
-  .filter(f => f.match(/\.(jpeg|jpg|png)$/i))
-  .map(f => `/images/${f}`);
+const imagesDir = path.join(process.cwd(), "public", "images");
+const ALL_IMAGES = fs
+  .readdirSync(imagesDir)
+  .filter((f) => f.match(/\.(jpeg|jpg|png)$/i))
+  .map((f) => `/images/${f}`);
 
 const categories = [
   {
@@ -16,89 +17,164 @@ const categories = [
     description: 'Custom-designed cakes built around a character, hobby or party theme — tell us the idea and we\u2019ll sketch a design.',
   },
   {
-    id: 'birthday-cakes',
-    name: 'Birthday Cakes',
-    tagline: 'Bright, festive & personal',
-    description: 'Fresh, made-to-order birthday cakes finished with piping, drips or fondant detail in your chosen colours.',
+    id: "birthday-cakes",
+    name: "Birthday Cakes",
+    tagline: "Bright, festive & personal",
+    description:
+      "Fresh, made-to-order birthday cakes finished with piping, drips or fondant detail in your chosen colours.",
   },
   {
-    id: 'wedding-cakes',
-    name: 'Wedding Cakes',
-    tagline: 'Tiered centrepieces',
-    description: 'Elegant tiered wedding cakes finished in sugar florals, hand-piping and metallic accents.',
+    id: "wedding-cakes",
+    name: "Wedding Cakes",
+    tagline: "Tiered centrepieces",
+    description:
+      "Elegant tiered wedding cakes finished in sugar florals, hand-piping and metallic accents.",
   },
   {
-    id: 'anniversary-cakes',
-    name: 'Anniversary Cakes',
-    tagline: 'Celebrating every year together',
-    description: 'Refined celebration cakes designed for milestone anniversaries, big or small.',
+    id: "anniversary-cakes",
+    name: "Anniversary Cakes",
+    tagline: "Celebrating every year together",
+    description:
+      "Refined celebration cakes designed for milestone anniversaries, big or small.",
   },
   {
-    id: 'baby-welcome-cakes',
-    name: 'Baby Welcome Cakes',
-    tagline: 'Baby showers & gender reveals',
-    description: 'Soft, sweet designs for baby showers, gender reveals and welcome-home celebrations.',
+    id: "baby-welcome-cakes",
+    name: "Baby Welcome Cakes",
+    tagline: "Baby showers & gender reveals",
+    description:
+      "Soft, sweet designs for baby showers, gender reveals and welcome-home celebrations.",
   },
   {
-    id: 'fruit-cakes',
-    name: 'Fruit Cakes',
-    tagline: 'Real fruit, seasonal availability',
-    description: 'Cakes layered with real fruit purée and fresh fruit. Availability shifts with the season — ask us what\u2019s fresh.',
+    id: "fruit-cakes",
+    name: "Fruit Cakes",
+    tagline: "Real fruit, seasonal availability",
+    description:
+      "Cakes layered with real fruit purée and fresh fruit. Availability shifts with the season — ask us what\u2019s fresh.",
   },
   {
-    id: 'brownies',
-    name: 'Brownies',
-    tagline: 'Dense, fudgy, cut to order',
-    description: 'Small-batch brownies sold by the box, in classic and specialty flavours.',
+    id: "brownies",
+    name: "Brownies",
+    tagline: "Dense, fudgy, cut to order",
+    description:
+      "Small-batch brownies sold by the box, in classic and specialty flavours.",
   },
 ];
 
 const catIndex = Object.fromEntries(categories.map((c) => [c.id, c]));
 
 // Real flavours from the client's flavour sheet.
-const classicFlavours = ['Vanilla', 'Chocolate', 'Red Velvet', 'Butterscotch', 'Vanilla Chocolate', 'Vanilla Velvet'];
-const fruitFlavours = ['Strawberry', 'Raspberry', 'Mango', 'Carrot'];
+const classicFlavours = [
+  "Vanilla",
+  "Chocolate",
+  "Red Velvet",
+  "Butterscotch",
+  "Vanilla Chocolate",
+  "Vanilla Velvet",
+];
+const fruitFlavours = ["Strawberry", "Raspberry", "Mango", "Carrot"];
 const allCakeFlavours = [...classicFlavours, ...fruitFlavours];
 
-const LB_WEIGHTS = ['1 lb', '2 lb', '2.5 lb', '3 lb', '4 lb', '5 lb'];
-const BOX_SIZES = ['Box of 6', 'Box of 12', 'Box of 24'];
+const LB_WEIGHTS = ["1 lb", "2 lb", "2.5 lb", "3 lb", "4 lb", "5 lb"];
+const BOX_SIZES = ["Box of 6", "Box of 12", "Box of 24"];
 
 const designsByCategory = {
-  'theme-cakes': [
-    'Superhero Squad', 'Safari Adventure', 'Space Explorer', 'Enchanted Forest', 'Under the Sea',
-    'Princess Castle', 'Dinosaur World', 'Unicorn Cloud', 'Football Ground', 'Race Track',
-    'Favourite Cartoon', 'Floral Garden Party', 'Camping Adventure', 'Construction Site',
+  "theme-cakes": [
+    "Superhero Squad",
+    "Safari Adventure",
+    "Space Explorer",
+    "Enchanted Forest",
+    "Under the Sea",
+    "Princess Castle",
+    "Dinosaur World",
+    "Unicorn Cloud",
+    "Football Ground",
+    "Race Track",
+    "Favourite Cartoon",
+    "Floral Garden Party",
+    "Camping Adventure",
+    "Construction Site",
   ],
-  'birthday-cakes': [
-    'Confetti Pop', 'Rainbow Drip', 'Golden Number', 'Balloon Bunch', 'Sprinkle Party',
-    'Sunshine Citrus', 'Milestone Gold', 'Star Sparkle', 'Retro Disco', 'Candy Shop',
-    'Watercolour Bloom', 'Marble Drip', 'Boho Floral', 'Simple & Sweet',
+  "birthday-cakes": [
+    "Confetti Pop",
+    "Rainbow Drip",
+    "Golden Number",
+    "Balloon Bunch",
+    "Sprinkle Party",
+    "Sunshine Citrus",
+    "Milestone Gold",
+    "Star Sparkle",
+    "Retro Disco",
+    "Candy Shop",
+    "Watercolour Bloom",
+    "Marble Drip",
+    "Boho Floral",
+    "Simple & Sweet",
   ],
-  'wedding-cakes': [
-    'Ivory Rose Tier', 'Cascading Floral', 'Marble & Gold Leaf', 'Blush Peony', 'Classic Three-Tier',
-    'Eternal Bloom', 'Champagne Drip', 'Lace & Pearl', 'Minimalist Elegance', 'Garden Romance',
+  "wedding-cakes": [
+    "Ivory Rose Tier",
+    "Cascading Floral",
+    "Marble & Gold Leaf",
+    "Blush Peony",
+    "Classic Three-Tier",
+    "Eternal Bloom",
+    "Champagne Drip",
+    "Lace & Pearl",
+    "Minimalist Elegance",
+    "Garden Romance",
   ],
-  'anniversary-cakes': [
-    'Golden Anniversary', 'Rose Gold Celebration', 'Elegant Two-Tier', 'Forever Vow', 'Candlelight Romance',
-    'Silver Jubilee', 'Timeless Love', 'Vintage Romance', 'Classic Monogram', 'Soft Blush Elegance',
+  "anniversary-cakes": [
+    "Golden Anniversary",
+    "Rose Gold Celebration",
+    "Elegant Two-Tier",
+    "Forever Vow",
+    "Candlelight Romance",
+    "Silver Jubilee",
+    "Timeless Love",
+    "Vintage Romance",
+    "Classic Monogram",
+    "Soft Blush Elegance",
   ],
-  'baby-welcome-cakes': [
-    'Little Cloud', 'Baby Bootie', 'Stork Delivery', 'Soft Blush Bump', 'Teddy Bear Hug',
-    'Baby\u2019s Breath Floral', 'Gender Reveal Surprise', 'Welcome Home Baby', 'Rock-a-Bye', 'Tiny Toes',
+  "baby-welcome-cakes": [
+    "Little Cloud",
+    "Baby Bootie",
+    "Stork Delivery",
+    "Soft Blush Bump",
+    "Teddy Bear Hug",
+    "Baby\u2019s Breath Floral",
+    "Gender Reveal Surprise",
+    "Welcome Home Baby",
+    "Rock-a-Bye",
+    "Tiny Toes",
   ],
-  'fruit-cakes': [
-    'Fresh Strawberry Shortcake', 'Raspberry Ripple', 'Mango Delight', 'Classic Carrot Spice',
-    'Strawberry Rose', 'Mixed Berry Medley', 'Tropical Mango Cream', 'Carrot Walnut',
-    'Raspberry White Chocolate', 'Strawberry Mango Fusion',
+  "fruit-cakes": [
+    "Fresh Strawberry Shortcake",
+    "Raspberry Ripple",
+    "Mango Delight",
+    "Classic Carrot Spice",
+    "Strawberry Rose",
+    "Mixed Berry Medley",
+    "Tropical Mango Cream",
+    "Carrot Walnut",
+    "Raspberry White Chocolate",
+    "Strawberry Mango Fusion",
   ],
   brownies: [
-    'Classic Fudge Brownies', 'Walnut Brownies', 'Salted Caramel Brownies', 'Biscoff Brownies',
-    'Nutella Swirl Brownies', 'Blondies', 'Double Chocolate Brownies', 'Peanut Butter Swirl Brownies',
+    "Classic Fudge Brownies",
+    "Walnut Brownies",
+    "Salted Caramel Brownies",
+    "Biscoff Brownies",
+    "Nutella Swirl Brownies",
+    "Blondies",
+    "Double Chocolate Brownies",
+    "Peanut Butter Swirl Brownies",
   ],
 };
 
 function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
 function seededRand(seed) {
@@ -113,18 +189,27 @@ function pick(arr, rand) {
 }
 
 const descByCategory = {
-  'theme-cakes': (design, flavour) => `A hand-sculpted "${design}" theme cake in ${flavour.toLowerCase()}, fully customizable in colour and detail.`,
-  'birthday-cakes': (design, flavour) => `A ${design.toLowerCase()} birthday cake layered in ${flavour.toLowerCase()}, finished with fresh piping the day of pickup.`,
-  'wedding-cakes': (design, flavour) => `A ${design.toLowerCase()} tiered wedding cake in ${flavour.toLowerCase()}, designed around your colour palette.`,
-  'anniversary-cakes': (design, flavour) => `A ${design.toLowerCase()} celebration cake in ${flavour.toLowerCase()}, sized for an intimate toast or a full party.`,
-  'baby-welcome-cakes': (design, flavour) => `A ${design.toLowerCase()} design in ${flavour.toLowerCase()}, perfect for a shower or welcome-home celebration.`,
-  'fruit-cakes': (design, flavour) => `A ${design.toLowerCase()} made with real ${flavour.toLowerCase()} \u2014 availability depends on the season.`,
-  brownies: (design) => `Dense, fudgy ${design.toLowerCase()}, baked in small batches and cut fresh to order.`,
+  "theme-cakes": (design, flavour) =>
+    `A hand-sculpted "${design}" theme cake in ${flavour.toLowerCase()}, fully customizable in colour and detail.`,
+  "birthday-cakes": (design, flavour) =>
+    `A ${design.toLowerCase()} birthday cake layered in ${flavour.toLowerCase()}, finished with fresh piping the day of pickup.`,
+  "wedding-cakes": (design, flavour) =>
+    `A ${design.toLowerCase()} tiered wedding cake in ${flavour.toLowerCase()}, designed around your colour palette.`,
+  "anniversary-cakes": (design, flavour) =>
+    `A ${design.toLowerCase()} celebration cake in ${flavour.toLowerCase()}, sized for an intimate toast or a full party.`,
+  "baby-welcome-cakes": (design, flavour) =>
+    `A ${design.toLowerCase()} design in ${flavour.toLowerCase()}, perfect for a shower or welcome-home celebration.`,
+  "fruit-cakes": (design, flavour) =>
+    `A ${design.toLowerCase()} made with real ${flavour.toLowerCase()} \u2014 availability depends on the season.`,
+  brownies: (design) =>
+    `Dense, fudgy ${design.toLowerCase()}, baked in small batches and cut fresh to order.`,
 };
 
 const longDescByCategory = {
-  default: (name) => `Every ${name.toLowerCase()} is homemade to order using premium ingredients \u2014 nothing is pre-made or frozen. Share your preferred size, colours and any reference photos when you message us, and we\u2019ll confirm the design and exact price together. Whipped cream frosting is standard; buttercream is available on request.`,
-  brownies: (name) => `${name} are baked fresh in small batches. Sold by the box \u2014 message us your preferred quantity and flavour and we\u2019ll confirm pricing and pickup timing.`,
+  default: (name) =>
+    `Every ${name.toLowerCase()} is homemade to order using premium ingredients \u2014 nothing is pre-made or frozen. Share your preferred size, colours and any reference photos when you message us, and we\u2019ll confirm the design and exact price together. Whipped cream frosting is standard; buttercream is available on request.`,
+  brownies: (name) =>
+    `${name} are baked fresh in small batches. Sold by the box \u2014 message us your preferred quantity and flavour and we\u2019ll confirm pricing and pickup timing.`,
 };
 
 let cakes = [];
@@ -133,19 +218,23 @@ let counter = 1;
 for (const cat of categories) {
   const rand = seededRand(counter * 23 + 7);
   const designs = designsByCategory[cat.id];
-  const isBrownie = cat.id === 'brownies';
-  const isFruit = cat.id === 'fruit-cakes';
+  const isBrownie = cat.id === "brownies";
+  const isFruit = cat.id === "fruit-cakes";
 
   designs.forEach((design) => {
     const flavour = isBrownie
-      ? design.replace(' Brownies', '').replace('Blondies', 'Blondie')
+      ? design.replace(" Brownies", "").replace("Blondies", "Blondie")
       : isFruit
         ? pick(fruitFlavours, rand)
         : pick(allCakeFlavours, rand);
 
-    const name = isBrownie ? design : `${design} ${catIndex[cat.id].name.replace(' Cakes', '')} Cake`.replace(/\s+/g, ' ').trim();
+    const name = isBrownie
+      ? design
+      : `${design} ${catIndex[cat.id].name.replace(" Cakes", "")} Cake`
+          .replace(/\s+/g, " ")
+          .trim();
 
-    const id = `ck-${String(counter).padStart(3, '0')}`;
+    const id = `ck-${String(counter).padStart(3, "0")}`;
     const slug = slugify(`${name}-${id}`);
 
     cakes.push({
@@ -154,17 +243,16 @@ for (const cat of categories) {
       name,
       category: cat.id,
       flavour,
-      unitType: isBrownie ? 'box' : 'lb',
+      unitType: isBrownie ? "box" : "lb",
       availableWeights: isBrownie ? BOX_SIZES : LB_WEIGHTS,
-      tags: rand() > 0.82 ? ['bestseller'] : rand() > 0.9 ? ['new'] : [],
+      tags: rand() > 0.82 ? ["bestseller"] : rand() > 0.9 ? ["new"] : [],
       featured: rand() > 0.85,
       description: descByCategory[cat.id](design, flavour),
-      longDescription: (longDescByCategory[cat.id] || longDescByCategory.default)(name),
+      longDescription: (
+        longDescByCategory[cat.id] || longDescByCategory.default
+      )(name),
       image: pick(ALL_IMAGES, rand),
-      gallery: [
-        pick(ALL_IMAGES, rand),
-        pick(ALL_IMAGES, rand),
-      ],
+      gallery: [pick(ALL_IMAGES, rand), pick(ALL_IMAGES, rand)],
     });
     counter++;
   });
@@ -297,5 +385,7 @@ export const categories = ${JSON.stringify(categories, null, 2)};
 export const cakes = ${JSON.stringify(cakes, null, 2)};
 `;
 
-fs.writeFileSync(new URL('../src/data/cakes.js', import.meta.url), output);
-console.log(`Generated ${cakes.length} items across ${categories.length} categories.`);
+fs.writeFileSync(new URL("../src/data/cakes.js", import.meta.url), output);
+console.log(
+  `Generated ${cakes.length} items across ${categories.length} categories.`,
+);

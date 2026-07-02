@@ -37,7 +37,7 @@ export default function CategoryGrid() {
                 <div className="aspect-square w-full overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={sample?.image}
+                    src={sample?.image ? encodeURI(sample.image) : undefined}
                     alt={cat.name}
                     className="h-full w-full object-cover opacity-80 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-95"
                   />

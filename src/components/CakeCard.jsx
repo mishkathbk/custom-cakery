@@ -15,10 +15,10 @@ export default function CakeCard({ cake, index = 0 }) {
       className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream-light shadow-card"
     >
       <Link href={`/cake/${cake.slug}/`} className="block">
-        <div className="scallop-top relative aspect-[4/3] w-full overflow-hidden bg-blush">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* scallop-top */}
+        <div className=" relative aspect-[4/3] w-full  bg-blush">
           <img
-            src={cake.image}
+            src={encodeURI(cake.image)}
             alt={cake.name}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"

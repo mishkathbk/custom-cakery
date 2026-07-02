@@ -21,11 +21,12 @@ export default function CakeGallery({ images, name }) {
 
   return (
     <div>
-      <div className="scallop-bottom relative aspect-square w-full touch-pan-y overflow-hidden rounded-3xl bg-blush shadow-card">
+      {/* scallop-bottom */}
+      <div className=" relative aspect-square w-full touch-pan-y overflow-hidden rounded-3xl bg-blush shadow-card">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.img
             key={active}
-            src={images[active]}
+            src={encodeURI(images[active])}
             alt={`${name} — view ${active + 1} of ${images.length}`}
             custom={direction}
             drag={images.length > 1 ? 'x' : false}
@@ -84,7 +85,7 @@ export default function CakeGallery({ images, name }) {
               aria-label={`View image ${i + 1}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img} alt="" className="h-full w-full object-cover" />
+              <img src={encodeURI(img)} alt="" className="h-full w-full object-cover" />
             </button>
           ))}
         </div>
