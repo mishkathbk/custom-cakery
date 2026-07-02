@@ -1,6 +1,12 @@
 // One-off generator used to seed src/data/cakes.js.
 // Not part of the app build — safe to delete after editing the data by hand.
 import fs from 'fs';
+import path from 'path';
+
+const imagesDir = path.join(process.cwd(), 'public', 'images');
+const ALL_IMAGES = fs.readdirSync(imagesDir)
+  .filter(f => f.match(/\.(jpeg|jpg|png)$/i))
+  .map(f => `/images/${f}`);
 
 const categories = [
   {
@@ -154,11 +160,10 @@ for (const cat of categories) {
       featured: rand() > 0.85,
       description: descByCategory[cat.id](design, flavour),
       longDescription: (longDescByCategory[cat.id] || longDescByCategory.default)(name),
-      image: `https://picsum.photos/seed/${slug}/700/700`,
+      image: pick(ALL_IMAGES, rand),
       gallery: [
-        `https://picsum.photos/seed/${slug}-a/900/900`,
-        `https://picsum.photos/seed/${slug}-b/900/900`,
-        `https://picsum.photos/seed/${slug}-c/900/900`,
+        pick(ALL_IMAGES, rand),
+        pick(ALL_IMAGES, rand),
       ],
     });
     counter++;
@@ -185,7 +190,7 @@ export const siteConfig = {
   currencyCode: "CAD",
   // TODO: replace with the real WhatsApp number (digits only, country code first, e.g. 1 for Canada) and email.
   whatsappNumber: "19025550123",
-  email: "orders@halifaxcustomcakery.com",
+  email: "order@halifaxcustomcakery.com",
   address: "Home-based bakery in Halifax, NS \u2014 exact pickup location shared once your order is confirmed.",
   pickupOnly: true,
   hours: "Pickup times are confirmed with each order \u2014 message us to check availability for your date.",
