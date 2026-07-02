@@ -3,11 +3,11 @@
 import fs from "fs";
 import path from "path";
 
-const imagesDir = path.join(process.cwd(), "public", "images");
-const ALL_IMAGES = fs
-  .readdirSync(imagesDir)
-  .filter((f) => f.match(/\.(jpeg|jpg|png)$/i))
-  .map((f) => `/images/${f}`);
+const ALL_IMAGES = [
+  "/images/cake1.jpeg",
+  "/images/cake2.jpeg",
+  "/images/cake3.jpeg",
+];
 
 const categories = [
   {
