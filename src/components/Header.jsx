@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { href: '/#categories', label: 'Categories' },
   { href: '/pricing/', label: 'Pricing' },
   { href: '/about/', label: 'About' },
+  { href: '/enquire/', label: 'Enquire' },
 ];
 
 export default function Header() {

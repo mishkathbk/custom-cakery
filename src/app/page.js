@@ -5,6 +5,7 @@ import FeaturedCakes from '@/components/FeaturedCakes';
 import FlavoursStrip from '@/components/FlavoursStrip';
 import HowToOrder from '@/components/HowToOrder';
 import StoryStrip from '@/components/StoryStrip';
+import EnquiryCTA from '@/components/EnquiryCTA';
 
 export default function HomePage() {
   return (
@@ -15,7 +16,9 @@ export default function HomePage() {
       <FeaturedCakes />
       <FlavoursStrip />
       <HowToOrder />
+      <EnquiryCTA />
       <StoryStrip />
     </>
   );
 }
+
