@@ -310,7 +310,7 @@ export const siteConfig = {
   currency: "$",
   currencyCode: "CAD",
   // TODO: replace with the real WhatsApp number (digits only, country code first, e.g. 1 for Canada) and email.
-  whatsappNumber: "902-9066656",
+  whatsappNumber: "19029066656",
   email: "order@halifaxcustomcakery.com",
   address: "Home-based bakery in Halifax, NS \u2014 exact pickup location shared once your order is confirmed.",
   pickupOnly: true,
