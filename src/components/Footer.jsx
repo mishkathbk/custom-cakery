@@ -85,6 +85,7 @@ export default function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-cream-light/10 pt-6 font-mono text-xs text-cream-light/50 sm:flex-row">
           <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <p>Pickup only in Halifax, NS · Ordering via WhatsApp &amp; email · No online payments.</p>
+          <p>Developed by <span className="text-gold/70 font-semibold tracking-wide">MishStack&copy;</span></p>
         </div>
       </div>
     </footer>
