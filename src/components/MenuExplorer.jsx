@@ -34,7 +34,7 @@ export default function MenuExplorer() {
   return (
     <div>
       <div className="sticky top-[57px] z-30 -mx-4 border-b border-espresso/10 bg-cream/95 px-4 py-4 backdrop-blur-md sm:top-[65px] sm:mx-0 sm:rounded-2xl sm:border sm:px-5">
-        <div className="flex items-center gap-2 rounded-full border border-espresso/15 bg-cream-light px-4 py-2.5">
+        {/* <div className="flex items-center gap-2 rounded-full border border-espresso/15 bg-cream-light px-4 py-2.5">
           <Search size={16} className="shrink-0 text-espresso/40" />
           <input
             value={query}
@@ -47,7 +47,7 @@ export default function MenuExplorer() {
               <X size={15} className="text-espresso/40" />
             </button>
           )}
-        </div>
+        </div> */}
 
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <button

@@ -50,9 +50,7 @@ export default async function CakeDetailPage({ params }) {
               {category.name}
             </Link>
           )}
-          <h1 className="mt-2 font-display text-3xl font-semibold leading-tight text-espresso sm:text-4xl">
-            {cake.name}
-          </h1>
+
 
           <div className="mt-3 flex flex-wrap items-center gap-2">
             {cake.tags.includes('bestseller') && (
@@ -67,10 +65,6 @@ export default async function CakeDetailPage({ params }) {
               <MapPin size={10} /> Pickup only
             </span>
           </div>
-
-          <p className="mt-4 font-body text-[15px] leading-relaxed text-espresso/70">
-            {cake.longDescription}
-          </p>
 
           <div className="mt-6">
             <OrderPanel cake={cake} />

@@ -3,18 +3,37 @@
 import fs from "fs";
 import path from "path";
 
-const ALL_IMAGES = [
-  "/images/cake1.jpeg",
-  "/images/cake2.jpeg",
-  "/images/cake3.jpeg",
-];
+const imagesDir = path.join(process.cwd(), "public", "images");
+const categoryFolderMap = {
+  "theme-cakes": "Theme_Cake",
+  "anniversary-cakes": "Anniversary Cakes",
+  "birthday-cakes": "Birthday Cakes",
+  "fruit-cakes": "Fruit Cakes",
+  "wedding-cakes": "Wedding Cakes",
+  "brownies": "Brownies",
+  "baby-welcome-cakes": "Baby Welcoming Cakes",
+};
+
+const categoryImages = {};
+for (const [key, folderName] of Object.entries(categoryFolderMap)) {
+  const dir = path.join(imagesDir, folderName);
+  if (fs.existsSync(dir)) {
+    categoryImages[key] = fs.readdirSync(dir)
+      .filter((f) => f.match(/\.(jpeg|jpg|png)$/i))
+      .map((f) => `/images/${folderName}/${f}`);
+  } else {
+    categoryImages[key] = [];
+  }
+}
+const ALL_IMAGES = Object.values(categoryImages).flat();
 
 const categories = [
   {
-    id: 'theme-cakes',
-    name: 'Theme Cakes',
-    tagline: 'Hand-sculpted to your idea',
-    description: 'Custom-designed cakes built around a character, hobby or party theme — tell us the idea and we\u2019ll sketch a design.',
+    id: "theme-cakes",
+    name: "Theme Cakes",
+    tagline: "Hand-sculpted to your idea",
+    description:
+      "Custom-designed cakes built around a character, hobby or party theme — tell us the idea and we\u2019ll sketch a design.",
   },
   {
     id: "birthday-cakes",
@@ -221,7 +240,17 @@ for (const cat of categories) {
   const isBrownie = cat.id === "brownies";
   const isFruit = cat.id === "fruit-cakes";
 
-  designs.forEach((design) => {
+  let imagePool = categoryImages[cat.id];
+  if (!imagePool || imagePool.length === 0) {
+    imagePool = ALL_IMAGES;
+  }
+
+  const loopCount = categoryImages[cat.id] && categoryImages[cat.id].length > 0
+    ? categoryImages[cat.id].length
+    : designs.length;
+
+  for (let i = 0; i < loopCount; i++) {
+    const design = designs[i % designs.length];
     const flavour = isBrownie
       ? design.replace(" Brownies", "").replace("Blondies", "Blondie")
       : isFruit
@@ -237,6 +266,10 @@ for (const cat of categories) {
     const id = `ck-${String(counter).padStart(3, "0")}`;
     const slug = slugify(`${name}-${id}`);
 
+    const primaryImage = (categoryImages[cat.id] && categoryImages[cat.id].length > 0)
+      ? categoryImages[cat.id][i]
+      : pick(ALL_IMAGES, rand);
+
     cakes.push({
       id,
       slug,
@@ -251,11 +284,11 @@ for (const cat of categories) {
       longDescription: (
         longDescByCategory[cat.id] || longDescByCategory.default
       )(name),
-      image: pick(ALL_IMAGES, rand),
-      gallery: [pick(ALL_IMAGES, rand), pick(ALL_IMAGES, rand)],
+      image: primaryImage,
+      gallery: [pick(imagePool, rand), pick(imagePool, rand)],
     });
     counter++;
-  });
+  }
 }
 
 const output = `// AUTO-GENERATED SAMPLE CATALOG for Halifax Custom Cakery — edit freely by hand.
@@ -277,7 +310,7 @@ export const siteConfig = {
   currency: "$",
   currencyCode: "CAD",
   // TODO: replace with the real WhatsApp number (digits only, country code first, e.g. 1 for Canada) and email.
-  whatsappNumber: "19025550123",
+  whatsappNumber: "902-9066656",
   email: "order@halifaxcustomcakery.com",
   address: "Home-based bakery in Halifax, NS \u2014 exact pickup location shared once your order is confirmed.",
   pickupOnly: true,

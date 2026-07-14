@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MapPin, Clock, Mail, MessageCircle, Facebook, Instagram } from 'lucide-react';
 import { siteConfig, categories } from '@/data/cakes';
 import { generalWhatsAppLink } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -10,7 +11,13 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-gold text-espresso font-display text-lg italic">H</span>
+              <Image
+                src="/logo image/halifax_cakery_logo.png"
+                alt="Halifax Cakery Logo"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
               <span className="font-display text-xl font-semibold">{siteConfig.shortName}</span>
             </div>
             <p className="mt-4 max-w-sm font-body text-sm leading-relaxed text-cream-light/70">

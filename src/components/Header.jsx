@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { siteConfig } from '@/data/cakes';
 import { generalWhatsAppLink } from '@/lib/utils';
+import Image from 'next/image';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -39,12 +40,13 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 group" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-berry text-cream-light font-display text-lg italic shadow-card group-active:scale-95 transition-transform">
-            C
-          </span>
-          <span className="font-display text-xl font-semibold tracking-tight text-espresso">
-            {siteConfig.shortName}
-          </span>
+          <Image
+            src="/logo image/halifax_cakery_logo.png"
+            alt="Halifax Cakery Logo"
+            width={56}
+            height={56}
+            className="w-15 h-15 md:w-14 md:h-14 rounded-full shadow-card group-active:scale-95 transition-transform"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

@@ -39,14 +39,6 @@ export default function CakeCard({ cake, index = 0 }) {
       </Link>
 
       <div className="flex flex-1 flex-col p-4">
-        <Link href={`/cake/${cake.slug}/`}>
-          <h3 className="font-display text-base font-semibold leading-snug text-espresso line-clamp-2">
-            {cake.name}
-          </h3>
-        </Link>
-        <p className="mt-1 line-clamp-2 font-body text-xs leading-relaxed text-espresso/60">
-          {cake.description}
-        </p>
 
         <div className="mt-3 flex items-center justify-between">
           <Link
