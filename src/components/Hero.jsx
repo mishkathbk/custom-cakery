@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, MessageCircle, MapPin, Tag } from 'lucide-react';
+import { ArrowRight, MessageCircle, MapPin, Tag, Clock } from 'lucide-react';
 import SectionDivider from './SectionDivider';
 import { siteConfig, cakes } from '@/data/cakes';
 import { generalWhatsAppLink } from '@/lib/utils';
@@ -63,6 +64,9 @@ export default function Hero() {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-light px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-espresso/70 shadow-sm">
               <Tag size={11} className="text-berry" /> Priced by size &amp; design
             </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-light px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-espresso/70 shadow-sm">
+              <Clock size={11} className="text-berry" /> Order at least 48 hours before the event or occasion
+            </span>
           </motion.div>
 
           <motion.div
@@ -93,20 +97,18 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="col-span-3 row-span-2 overflow-hidden rounded-[2rem] border-4 border-cream-light shadow-lift"
+            className="relative col-span-3 row-span-2 overflow-hidden rounded-[2rem] border-4 border-cream-light shadow-lift"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroMain} alt="Signature custom cake" className="h-full w-full object-cover" />
+            <Image src={heroMain} alt="Signature custom cake" fill sizes="(max-width: 1024px) 100vw, 50vw" priority className="object-cover" />
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="animate-float col-span-2 row-span-1 overflow-hidden rounded-3xl border-4 border-cream-light shadow-lift"
+            className="relative animate-float col-span-2 row-span-1 overflow-hidden rounded-3xl border-4 border-cream-light shadow-lift"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroTopRight} alt="Theme cake detail" className="h-full w-full object-cover" />
+            <Image src={heroTopRight} alt="Theme cake detail" fill sizes="(max-width: 1024px) 50vw, 25vw" priority className="object-cover" />
           </motion.div>
 
           <motion.div
@@ -114,21 +116,11 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.4 }}
             style={{ animationDelay: '1.5s' }}
-            className="animate-float col-span-2 row-span-1 overflow-hidden rounded-3xl border-4 border-cream-light shadow-lift"
+            className="relative animate-float col-span-2 row-span-1 overflow-hidden rounded-3xl border-4 border-cream-light shadow-lift"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroBottomRight} alt="Fresh baked treat" className="h-full w-full object-cover" />
+            <Image src={heroBottomRight} alt="Fresh baked treat" fill sizes="(max-width: 1024px) 50vw, 25vw" priority className="object-cover" />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.7, type: 'spring' }}
-            className="absolute -bottom-4 left-4 grid h-20 w-20 place-items-center rounded-full bg-gold text-center shadow-lift sm:h-24 sm:w-24"
-          >
-            <span className="font-display text-xl italic text-espresso sm:text-2xl">50%</span>
-            <span className="sr-only">deposit secures your order</span>
-          </motion.div>
         </div>
       </div>
 
@@ -138,10 +130,9 @@ export default function Hero() {
           {[...marqueeSet, ...marqueeSet].map((cake, i) => (
             <div
               key={`${cake.id}-${i}`}
-              className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl border-2 border-cream-light shadow-card sm:h-24 sm:w-24"
+              className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border-2 border-cream-light shadow-card sm:h-24 sm:w-24"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={cake.image} alt="" className="h-full w-full object-cover" />
+              <Image src={cake.image} alt="" fill sizes="96px" className="object-cover" />
             </div>
           ))}
         </div>

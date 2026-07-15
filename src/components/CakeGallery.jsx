@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -24,10 +25,8 @@ export default function CakeGallery({ images, name }) {
       {/* scallop-bottom */}
       <div className=" relative aspect-square w-full touch-pan-y overflow-hidden rounded-3xl bg-blush shadow-card">
         <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.img
+          <motion.div
             key={active}
-            src={encodeURI(images[active])}
-            alt={`${name} — view ${active + 1} of ${images.length}`}
             custom={direction}
             drag={images.length > 1 ? 'x' : false}
             dragConstraints={{ left: 0, right: 0 }}
@@ -37,8 +36,17 @@ export default function CakeGallery({ images, name }) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: direction >= 0 ? -60 : 60 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="h-full w-full cursor-grab object-cover active:cursor-grabbing"
-          />
+            className="relative h-full w-full cursor-grab active:cursor-grabbing"
+          >
+            <Image
+              src={encodeURI(images[active])}
+              alt={`${name} — view ${active + 1} of ${images.length}`}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              className="object-cover pointer-events-none"
+            />
+          </motion.div>
         </AnimatePresence>
 
         {images.length > 1 && (
@@ -79,13 +87,12 @@ export default function CakeGallery({ images, name }) {
             <button
               key={img}
               onClick={() => setIndex([i, i > active ? 1 : -1])}
-              className={`h-16 w-16 shrink-0 overflow-hidden rounded-xl border-2 transition-colors ${
+              className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border-2 transition-colors ${
                 active === i ? 'border-berry' : 'border-transparent opacity-70'
               }`}
               aria-label={`View image ${i + 1}`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={encodeURI(img)} alt="" className="h-full w-full object-cover" />
+              <Image src={encodeURI(img)} alt="" fill sizes="64px" className="object-cover" />
             </button>
           ))}
         </div>

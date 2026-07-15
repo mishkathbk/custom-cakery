@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { MapPin, Clock, Mail, MessageCircle } from 'lucide-react';
 import { siteConfig, cakes } from '@/data/cakes';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -78,9 +79,8 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6 lg:px-8">
         <AnimatedSection className="grid overflow-hidden rounded-[2rem] bg-espresso shadow-lift lg:grid-cols-2">
-          <div className="aspect-[4/3] w-full lg:aspect-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cakes[30]?.image} alt="Halifax Custom Cakery workspace" className="h-full w-full object-cover" />
+          <div className="relative aspect-[4/3] w-full lg:aspect-auto">
+            <Image src={cakes[30]?.image} alt="Halifax Custom Cakery workspace" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           </div>
           <div className="p-8 sm:p-10">
             <h2 className="font-display text-2xl font-semibold text-cream-light">Order or ask a question</h2>

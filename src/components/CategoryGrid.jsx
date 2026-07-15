@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { categories, cakes } from '@/data/cakes';
 import AnimatedSection from './AnimatedSection';
@@ -34,12 +35,14 @@ export default function CategoryGrid() {
                 href={`/menu/?category=${cat.id}`}
                 className="group relative block overflow-hidden rounded-3xl bg-espresso shadow-card"
               >
-                <div className="aspect-square w-full overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={sample?.image ? encodeURI(sample.image) : undefined}
+                <div className="relative aspect-square w-full overflow-hidden">
+                  <Image
+                    src={sample?.image ? encodeURI(sample.image) : '/images/placeholder.jpg'}
                     alt={cat.name}
-                    className="h-full w-full object-cover opacity-80 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-95"
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    priority={i < 4}
+                    className="object-cover opacity-80 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-95"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/20 to-transparent" />

@@ -39,8 +39,8 @@ export default function Header() {
         scrolled ? 'bg-cream-light/90 backdrop-blur-md shadow-soft' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 group" onClick={() => setOpen(false)}>
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <Link href="/" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 flex items-center gap-2 group" onClick={() => setOpen(false)}>
           <Image
             src="/logo image/halifax_cakery_logo.png"
             alt="Halifax Cakery Logo"
@@ -76,7 +76,7 @@ export default function Header() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-espresso/15 text-espresso md:hidden"
+          className="ml-auto grid h-10 w-10 place-items-center rounded-full  text-espresso md:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>

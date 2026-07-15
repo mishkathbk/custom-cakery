@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { cakes } from '@/data/cakes';
@@ -28,8 +29,7 @@ export default function StoryStrip() {
           </Link>
         </AnimatedSection>
         <AnimatedSection variant="scale" delay={0.1} className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt="Halifax Custom Cakery kitchen" className="h-full w-full object-cover" />
+          <Image src={img} alt="Halifax Custom Cakery kitchen" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
         </AnimatedSection>
       </div>
     </section>

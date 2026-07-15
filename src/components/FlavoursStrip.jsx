@@ -6,7 +6,7 @@ const classicFlavours = ['Vanilla', 'Chocolate', 'Red Velvet', 'Butterscotch', '
 const fruitFlavours = ['Strawberry', 'Raspberry', 'Mango', 'Carrot'];
 const specialties = [
   'Bento Cakes', 'Cupcakes', 'Birthday Cakes', 'Wedding Cakes', 'Anniversary Cakes',
-  'Baby Shower Cakes', 'Graduation Cakes', 'Corporate Event Cakes',
+  'Baby Shower Cakes', 'Graduation Cakes', 'Corporate Event Cakes', 'Customized Cakes'
 ];
 
 function ChipRow({ items, tone = 'blush' }) {

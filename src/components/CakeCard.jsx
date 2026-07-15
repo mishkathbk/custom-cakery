@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { cakeWhatsAppLink, cakeEmailLink } from '@/lib/utils';
@@ -17,11 +18,13 @@ export default function CakeCard({ cake, index = 0 }) {
       <Link href={`/cake/${cake.slug}/`} className="block">
       {/* scallop-top */}
         <div className=" relative aspect-[4/3] w-full  bg-blush">
-          <img
+          <Image
             src={encodeURI(cake.image)}
             alt={cake.name}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={index < 6}
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
           />
           <div className="absolute left-2 top-2 flex flex-wrap gap-1.5">
             {cake.tags.includes('bestseller') && (
