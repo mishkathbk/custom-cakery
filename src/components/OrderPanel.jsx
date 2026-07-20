@@ -58,13 +58,13 @@ export default function OrderPanel({ cake }) {
         >
           <MessageCircle size={17} fill="white" strokeWidth={0} /> Order on WhatsApp
         </motion.a>
-        <motion.a
+        {/* <motion.a
           whileTap={{ scale: 0.97 }}
           href={cakeEmailLink(cake, selected)}
           className="inline-flex items-center justify-center gap-2 rounded-full border border-espresso/20 bg-transparent px-6 py-3.5 font-body text-sm font-semibold text-espresso"
         >
           <Mail size={16} /> Order by email
-        </motion.a>
+        </motion.a> */}
       </div>
       <p className="mt-4 font-mono text-[11px] leading-relaxed text-espresso/45">
         Tapping order pre-fills your message with this item and size — you can edit it before sending. We&apos;ll reply with the exact price and confirm your pickup date. A 50% non-refundable deposit secures your order.

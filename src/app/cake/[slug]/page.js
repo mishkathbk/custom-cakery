@@ -38,7 +38,7 @@ export default async function CakeDetailPage({ params }) {
 
       <div className="mt-5 grid gap-10 lg:grid-cols-2 lg:gap-14">
         {/* Images — left column, swipeable when there's more than one */}
-        <CakeGallery images={[cake.image, ...cake.gallery]} name={cake.name} />
+        <CakeGallery images={[cake.image]} name={cake.name} />
 
         {/* Details + order — right column */}
         <div>

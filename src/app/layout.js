@@ -31,11 +31,12 @@ const spaceMono = Space_Mono({
 export const metadata = {
   title: `${siteConfig.name} | Custom Cakes & Bakery`,
   description: siteConfig.description,
-  metadataBase: new URL('https://example.com'),
+  metadataBase: new URL('https://www.halifaxcustomcakery.com'),
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     type: 'website',
+    url: 'https://www.halifaxcustomcakery.com',
   },
 };
 
